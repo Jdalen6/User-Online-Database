@@ -1,0 +1,291 @@
+<!--
+    Author - James Dalen
+    Device - M1 macbook air
+    Browser - Google Chrome-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Database</title>
+    <!-- Use Bootstrap for the form styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--For the modal-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Use W3.CSS for the Modal -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Extra Styles for the Bootstrap Forms */
+        h1 {
+            font: 30px Verdana;
+            text-align: center;
+        }
+        h2 {
+            font: 20px Verdana;
+            text-align: center;
+        }
+        legend {
+            padding: 10px;
+            font: 30px Verdana
+        }
+    </style>
+</head>
+<body>
+    <h1>User Database</h1>
+
+        <!--Form from bootstrap-->
+        <form class="form-horizontal" id="addUserForm">
+            <fieldset>
+            
+            <!-- Form Name -->
+            <legend>Add User</legend>
+            
+            <!-- Select Title -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="title">Title</label>
+              <div class="col-md-4">
+                <select id="title" name="title" class="form-control">
+                  <option value="Mx">Mx</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Select name-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="Fname">Name</label>  
+              <div class="col-md-4">
+              <input id="Fname" name="Fname" type="text" placeholder="Enter name " class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Select surname-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="Lname">Surname</label>  
+              <div class="col-md-4">
+              <input id="Lname" name="Lname" type="text" placeholder="Enter surname " class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- select phone number-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="phone">Phone </label>  
+              <div class="col-md-4">
+              <input id="phone" name="phone" type="text" placeholder="Enter phone number" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- select email-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="email">Email</label>  
+              <div class="col-md-4">
+              <input id="email" name="email" type="text" placeholder="Enter email address" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Address line 1-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="addLine1">Address Line 1</label>  
+              <div class="col-md-4">
+              <input id="addLine1" name="addLine1" type="text" placeholder="Enter text " class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Address Line 2-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="addLine2">Address Line 2</label>  
+              <div class="col-md-4">
+              <input id="addLine2" name="addLine2" type="text" placeholder="Enter text" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Town-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="town">Town</label>  
+              <div class="col-md-4">
+              <input id="town" name="town" type="text" placeholder="Enter town" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- County-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="county">County</label>  
+              <div class="col-md-4">
+              <input id="county" name="county" type="text" placeholder="Enter County" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Eircode-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="eircode">Eircode</label>  
+              <div class="col-md-4">
+              <input id="eircode" name="eircode" type="text" placeholder="Enter eircode" class="form-control input-md">
+                
+              </div>
+            </div>
+
+            <!--For submitting-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <input type="submit" value="Send User Data" class="btn btn-primary">
+                </div>
+            </div>
+            
+            </fieldset>
+            </form>
+
+    <!--Retrieving table
+        Initially only has titles but gets rows added to it when user information is retrieved -->
+
+    <div class="container mt-4">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <legend>Student Details
+                            <input type="submit" value="Retrieve Random User information" class="btn btn-primary" id="retrieveBtn">
+                        </legend>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table table-bordered table-striped" id="mytable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>First Name</th>
+                                    <th>Surname</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address Line 1</th>
+                                    <th>Address Line 2</th>
+                                    <th>Town</th>
+                                    <th>County</th>
+                                    <th>Eircode</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal with help from w3 schools-->
+
+    <div class="w3-container">
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-animate-zoom w3-card-4">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('id01').style.display='none'" 
+              class="w3-button w3-display-topright">&times;</span>
+              <h2>User Database</h2>
+            </header>
+            <div class="w3-container">
+              <p id="modalFP">User successfully added to database!</p>
+              <p id ="modalSP"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Jquery and ajax section-->
+
+    <script>
+        //For Post method
+        $(document).ready(function (){
+            $('#addUserForm').submit(function (e) {
+                var user = {
+                    title: $('select[name=title]').val(),
+                    firstname: $('input[name=Fname]').val(),
+                    surname: $('input[name=Lname]').val(),
+                    email: $('input[name=email]').val(),
+                    phone: $('input[name=phone]').val(),
+                    addLine1: $('input[name=addLine1]').val(),
+                    addLine2: $('input[name=addLine2]').val(),
+                    town: $('input[name=town]').val(),
+                    county: $('input[name=county]').val(),
+                    eircode: $('input[name=eircode]').val(),
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8080/api/user',
+                    data: user
+                })
+                    .done(function (data) {
+                        //clearing the data
+                        $('input[name=title]').val('');
+                        $('input[name=Fname]').val('');
+                        $('input[name=Lname]').val('');
+                        $('input[name=email]').val('');
+                        $('input[name=phone]').val('');
+                        $('input[name=addLine1]').val('');
+                        $('input[name=addLine2]').val('');
+                        $('input[name=town]').val('');
+                        $('input[name=county]').val('');
+                        $('input[name=eircode]').val('');
+                        
+                        // Updating modal to be shown and to show that operation was successful
+                        document.getElementById('modalFP').innerHTML = "User successfully added to database!";
+                        document.getElementById('id01').style.display = 'block';
+                        
+                    });
+                e.preventDefault(); 
+            });
+            //For the get function, it receives the json data of the users from the server then adds it to the table
+            $('#retrieveBtn').click(function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/api/user'
+                })
+                    .done(function(data) {
+                        $("#mytable tbody tr").remove(); //Clears the rows in the table 
+                        for (let i = 0; i < data.length; i++) 
+                        {
+                            console.log(data);
+                            let table = document.getElementById('mytable'); 
+                            let newRow = `<tr>
+                                        <td>'${data[i].Title}'</td>
+                                        <td>'${data[i].FirstName}'</td>
+                                        <td>'${data[i].Surname}'</td>
+                                        <td>'${data[i].EmailAddress}'</td>
+                                        <td>'${data[i].Mobile}'</td>
+                                        <td>'${data[i].AddressLine1}'</td>
+                                        <td>'${data[i].AddressLine2}'</td>
+                                        <td>'${data[i].Town}'</td>
+                                        <td>'${data[i].County}'</td>
+                                        <td>'${data[i].Eircode}'</td>
+                                     </tr>`
+                            table.innerHTML += newRow;
+                        }
+                        document.getElementById('modalFP').innerHTML = "Records shown for all users named: " + data[0].FirstName;
+                        document.getElementById('id01').style.display = 'block';
+                    });    
+            });
+        }); 
+    </script>       
+</body>
+</html>
